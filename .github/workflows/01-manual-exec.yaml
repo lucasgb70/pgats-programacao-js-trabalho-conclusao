@@ -21,7 +21,7 @@ jobs:
         run: npm install --save-dev mocha mochawesome
 
       - name: Checando testes de unidade com relatório
-        run: npx mocha
+        run: ./node_modules/.bin/mocha --reporter mochawesome
 
       - name: Enviando relatório de testes
         uses: actions/upload-artifact@v4
