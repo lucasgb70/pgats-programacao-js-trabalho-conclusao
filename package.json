@@ -1,6 +1,7 @@
 {
   "type": "module",
   "devDependencies": {
-    "mocha": "^11.7.5"
+    "mocha": "^11.7.5",
+    "mochawesome": "^7.1.3"
   }
 }
