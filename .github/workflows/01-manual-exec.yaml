@@ -1,0 +1,31 @@
+#CI de Nível 01 - Disparo manual a partir de 1 clique
+name: 'Execução Manual'
+
+on:
+  workflow_dispatch:
+
+jobs:
+  unidade:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Instalando o Yarn
+        run: npm install -g yarn
+
+      - name: Instalando as dependências
+        run: npm install
+
+      - name: Instalando o Mocha e Mochawesome
+        run: npm install --save-dev mocha mochawesome
+
+      - name: Checando testes de unidade com relatório
+        run: npx mocha
+
+      - name: Enviando relatório de testes
+        uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: relatorio
+          path: ./mochawesome-report
